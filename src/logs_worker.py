@@ -1,5 +1,6 @@
 import json
 
+
 def read_logs(file_paths, filter_date=None):
     logs = []
     for file_path in file_paths:
@@ -13,6 +14,7 @@ def read_logs(file_paths, filter_date=None):
                 except json.JSONDecodeError:
                     continue
     return logs
+
 
 def _matches_date(timestamp, filter_date):
     log_date = timestamp.split('T')[0]
