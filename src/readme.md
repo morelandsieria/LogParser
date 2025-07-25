@@ -1,6 +1,6 @@
 Установка зависимостей: pip install -r requirements.txt
 
-python main.py --help
+python3 main.py --help
 
 --file FILE [FILE ...] Один или несколько лог-файлов
 
