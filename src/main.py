@@ -13,6 +13,10 @@ def main():
     args_parser = Parser()
     args = args_parser.parse_args()
 
+    for file_path in args.file:
+        if not Path(file_path).exists():
+           raise ValueError(f"Файл {file_path} не существует")
+
     logs = read_logs(args.file, args.date)
 
     if args.report == 'average':
@@ -23,7 +27,11 @@ def main():
             headers=['Endpoint', 'Requests', 'Avg Time']
         )
     else:
-        raise ValueError(f"Неизвестный тип отчета:")
+        raise ValueError(f"Неизвестный тип отчета")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Ошибка: {e}")
+        sys.exit(1)
